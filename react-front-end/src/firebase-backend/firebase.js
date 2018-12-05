@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 
+
 const config = {
     apiKey: "AIzaSyC5xD7SZ0I8FcA2lFL25irvHV45jeT4O6Y",
     authDomain: "capstone-project-d83d7.firebaseapp.com",
