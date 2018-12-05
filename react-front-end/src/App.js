@@ -4,6 +4,7 @@ import database from './firebase-backend/firebase';
 import './App.css';
 import ComicBookCharacterContainer from './ComicBookCharacterContainer/ComicBookCharacter';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { Button } from 'reactstrap';
 
 const uiConfig = {
   signInFlow: 'popup',
@@ -14,7 +15,7 @@ const uiConfig = {
     firebase.auth.EmailAuthProvider.PROVIDER_ID
   ],
   callbacks: {
-    signInSuccess: () => false
+    signInSuccessWithAuthResult: () => false
   }
 }
 
@@ -35,6 +36,7 @@ class App extends Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user =>{
       this.setState({isSignedIn: !!user})
+      console.log('user', user);
     })
   }
 
@@ -44,8 +46,7 @@ class App extends Component {
       <div className="App">
         {this.state.isSignedIn ? 
           (<span>
-            <button onClick={() => firebase.auth().signOut()}>Sign Out!</button>
-            <ComicBookCharacterContainer name={this.state.name} aliases={this.state.aliases} description={this.state.description} id={this.state.id} powers={this.state.powers} />
+            <ComicBookCharacterContainer  name={this.state.name} aliases={this.state.aliases} description={this.state.description} id={this.state.id} powers={this.state.powers} />
           </span>)
         : 
         (<StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>)}

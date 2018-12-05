@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import ComicBookCharacterList from '../ComicBookCharacterList/ComicBookCharacterList';
 import ComicBookCharacterSearch from '../CBSearchContainer/ComicBookCharacterSearch';
+import firebase from 'firebase'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem } from 'reactstrap';
+
 
 
 export default class ComicBookCharacterContainer extends Component {
@@ -9,11 +23,17 @@ export default class ComicBookCharacterContainer extends Component {
         this.state = {
             query: '',
             results: [],
+            isOpen: false,
         }
         this.onChange = this.onChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
     
     onChange = (e) => {
         console.log(e.currentTarget.value)
@@ -58,9 +78,42 @@ export default class ComicBookCharacterContainer extends Component {
     render(){
         return (
             <div>
+                <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">Comic Book App</NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="ml-auto" navbar>
+                    <NavItem>
+                        {/* <NavLink href="/components/">Components</NavLink> */}
+                    </NavItem>
+                    <NavItem>
+                        <NavLink onClick={() => firebase.auth().signOut()}>Sign Out</NavLink>
+                    </NavItem>
+                    {/* <UncontrolledDropdown nav inNavbar>
+                        <DropdownToggle nav caret>
+                        Options
+                        </DropdownToggle>
+                        <DropdownMenu right>
+                        <DropdownItem>
+                            Option 1
+                        </DropdownItem>
+                        <DropdownItem>
+                            Option 2
+                        </DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem>
+                            Reset
+                        </DropdownItem>
+                        </DropdownMenu>
+                    </UncontrolledDropdown> */}
+                    </Nav>
+                </Collapse>
+                </Navbar>
+                {/* <button onClick={() => firebase.auth().signOut()}>Sign Out!</button> */}
+                <h4>Welcome, {firebase.auth().currentUser.displayName}</h4>
                 <ComicBookCharacterSearch value={this.state.value} handleSubmit={this.handleSubmit} onChange={this.onChange}/>
                 <ComicBookCharacterList results={this.state.results} />
             </div>
-        )
+        );
     }
 }
