@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import database from './firebase-backend/firebase';
 import './App.css';
 import ComicBookCharacterContainer from './ComicBookCharacterContainer/ComicBookCharacter';
 
@@ -10,9 +11,19 @@ class App extends Component {
       aliases: "",
       description: "",
       id: "",
-      // first_appeared_in_issue: "",
+      first_appeared_in_issue: "",
     }
   }
+
+  componentDidMount(){
+    database.ref().set({
+      "name": "Steven Ariol"
+    })
+    .then(() => console.log('Data Written Successfully'))
+    .catch((error) => console.log('Firebase Error ', error))
+  }
+
+
   render() {
     return (
       <div className="App">
