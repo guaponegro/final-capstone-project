@@ -1,3 +1,60 @@
+#welcome {
+  color: white;
+  padding-bottom: 20px;
+  font-family: 'Patrick Hand', cursive;
+  background-color:rgba(0, 0, 0, 0.5);
+  background-clip: inherit;
+}
+
+#search-header {
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
+
+#results-header {
+  color: white;
+  padding-top: 20px;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
+
+#navbar-font {
+  font-family: 'Patrick Hand', cursive;
+  opacity: .9
+}
+
+#navbar-brand-title {
+  opacity: 1;
+}
+
+#signout-font {
+  color: black;
+}
+
+#results-data {
+  color: white;
+  background-color:rgba(0, 0, 0, 0.7);
+}
+
+#results-1 {
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bolder;
+}
+
+#results-2 {
+  font-family: 'Patrick Hand', cursive;
+  /* text-align: center; */
+}
+
+#results-3 {
+  text-align: center;
+}
+
+body {
+  background-image: url('./img/Superhero-Collage.jpg');
+}
+
 .App {
   text-align: center;
 }
@@ -30,3 +87,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+

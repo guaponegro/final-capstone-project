@@ -78,8 +78,8 @@ export default class ComicBookCharacterContainer extends Component {
     render(){
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">Comic Book App</NavbarBrand>
+                <Navbar color="light" light expand="md" id='navbar-font'>
+                <NavbarBrand href="/" id='navbar-brand-title'>Comic Book App</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
@@ -87,7 +87,7 @@ export default class ComicBookCharacterContainer extends Component {
                         {/* <NavLink href="/components/">Components</NavLink> */}
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={() => firebase.auth().signOut()}>Sign Out</NavLink>
+                        <NavLink id='signout-font'onClick={() => firebase.auth().signOut()}>Sign Out</NavLink>
                     </NavItem>
                     {/* <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
@@ -110,7 +110,7 @@ export default class ComicBookCharacterContainer extends Component {
                 </Collapse>
                 </Navbar>
                 {/* <button onClick={() => firebase.auth().signOut()}>Sign Out!</button> */}
-                <h4>Welcome, {firebase.auth().currentUser.displayName}</h4>
+                <h3 id='welcome'>Welcome, {firebase.auth().currentUser.displayName}</h3>
                 <ComicBookCharacterSearch value={this.state.value} handleSubmit={this.handleSubmit} onChange={this.onChange}/>
                 <ComicBookCharacterList results={this.state.results} />
             </div>
