@@ -38,6 +38,12 @@ class App extends Component {
       this.setState({isSignedIn: !!user})
       console.log('user', user);
     })
+
+    database.ref().set({
+      "name": "Steven Ariol"
+    })
+    .then(() => console.log('Data Written Successfully'))
+    .catch((error) => console.log('Firebase Error ', error))
   }
 
 
